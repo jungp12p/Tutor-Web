@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 2000px;
+      width: 100%;
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid #475569;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.6rem;
+    }
+
+    p.subtitle {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #9ca3af;
+      font-size: 0.95rem;
+    }
+
+    /* Video section: player left, list right */
+    .video-section {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .video-player {
+      flex: 3;
+      min-width: 300px;
+      background: #020617;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .video-player iframe {
+      width: 100%;
+      height: 420px;
+      border: none;
+      display: block;
+    }
+
+    .video-list {
+      flex: 1;
+      min-width: 230px;
+      max-width: 300px;
+      max-height: 420px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .video-list-title {
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .video-item {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: none;
+      background: #334155;
+      color: #e5e7eb;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      transition: 0.15s;
+    }
+
+    .video-item:hover {
+      background: #475569;
+    }
+
+    .video-item.active {
+      background: #2563eb;
+    }
+
+    .video-item .title {
+      font-weight: 600;
+    }
+
+    .video-item .meta {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    /* Zoom button */
+    .zoom-button {
+      margin-top: 8px;
+      display: inline-block;
+      padding: 14px 20px;
+      text-align: center;
+      background: #22c55e;
+      color: #022c22;
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .zoom-button:hover {
+      background: #16a34a;
+    }
+
+    @media (max-width: 700px) {
+      .video-section {
+        flex-direction: column;
+      }
+      .video-player iframe {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Class Portal</h1>
+    <p class="subtitle">Watch recorded sessions or join the live Zoom.</p>
+    <div class="video-section">
+      <div class="video-player">
+        <iframe id="mainVideo"
+                src=""
+                allow="autoplay; fullscreen"
+                allowfullscreen
+                webkitallowfullscreen
+                mozallowfullscreen></iframe>
+      </div>
+
+      <div class="video-list" id="videoList">
+        <div class="video-list-title">Recorded Sessions</div>
+      </div>
+    </div>
+
+    <!-- Zoom button -->
+    <a class="zoom-button"
+       href="https://zoom.us/j/1234567890?pwd=EXAMPLEPASSCODE"
+       target="_blank" rel="noopener noreferrer">
+      Join Zoom Meeting
+    </a>
+  </div>
+
+  <script>
+    const APPS_SCRIPT_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLicJcf9_mDA8IUni8MkWDvU9LF2p05LYVC8Dvh2tMxZmTx3RuZjSX_SLmi5U4GCVKPi8ARqgvUOFcs2MsJ79YdM08QSf6wHhvQ-m778Nf5xdhrsXM-p2l9yQdYlLSq6MQYaemyQ7-uVWdf7_s0dbueXvCVQh1oXfCIFM5PdbXz3_0YBZx5nvDBhz2z59x2aS4D0P78qUYmzTOkR5nT0gHQYUAyYkDWRYsiF2L-ziaep75Ba1J8IU3NsAp6p1EHeCEQnaFHfbuuZytY48BUh2qxgCnDm6a4zFYUYlFrP&lib=Mx8FC60gMs3v2vaU5ULXE-Lr7iyfzK52-";
+
+    async function loadVideosFromDrive() {
+      try {
+        const res = await fetch(APPS_SCRIPT_URL);
+        const arr = await res.json();
+
+        if (arr.error) {
+          console.error("Drive list error:", arr.error);
+          // show a friendly message to the user
+          const list = document.getElementById("videoList");
+          list.innerHTML = '<div class="video-list-title">Recorded Sessions</div><div style="padding:12px;color:#fca5a5">Failed to load videos.</div>';
+          return;
+        }
+
+        const videoListEl = document.getElementById("videoList");
+        const mainVideo = document.getElementById("mainVideo");
+
+        // Reset list (keep the title)
+        videoListEl.innerHTML = '<div class="video-list-title">Recorded Sessions</div>';
+
+        if (!Array.isArray(arr) || arr.length === 0) {
+          videoListEl.innerHTML += '<div style="padding:12px;color:#9ca3af">No videos found in the folder.</div>';
+          return;
+        }
+
+        arr.forEach((file, idx) => {
+          const btn = document.createElement("button");
+          btn.className = "video-item";
+          if (idx === 0) btn.classList.add("active");
+
+          // sanitize file title before inserting into DOM
+          const safeTitle = escapeHtml(String(file.title || "Untitled"));
+          const created = file.createdAt ? new Date(file.createdAt).toLocaleDateString() : "";
+
+          btn.innerHTML = `
+            <span class="title">${safeTitle}</span>
+            <span class="meta">${created}</span>
+          `;
+          btn.dataset.src = file.previewUrl;
+
+          btn.addEventListener("click", () => {
+            // swap iframe src to Drive preview
+            mainVideo.src = file.previewUrl;
+
+            // update active state
+            videoListEl.querySelectorAll(".video-item").forEach(i => i.classList.remove("active"));
+            btn.classList.add("active");
+          });
+
+          videoListEl.appendChild(btn);
+
+          // default first video
+          if (idx === 0) {
+            mainVideo.src = file.previewUrl;
+          }
+        });
+
+      } catch (err) {
+        console.error("Failed to fetch drive list:", err);
+        const list = document.getElementById("videoList");
+        list.innerHTML = '<div class="video-list-title">Recorded Sessions</div><div style="padding:12px;color:#fca5a5">Error loading videos.</div>';
+      }
+    }
+
+    // small helper to avoid HTML injection when file names contain special chars
+    function escapeHtml(s) {
+      return s.replaceAll("&","&amp;")
+              .replaceAll("<","&lt;")
+              .replaceAll(">","&gt;")
+              .replaceAll('"',"&quot;")
+              .replaceAll("'", "&#39;");
+    }
+
+    // run when page loads
+    loadVideosFromDrive();
+  </script>
+</body>
+</html>
