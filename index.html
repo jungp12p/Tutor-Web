@@ -1,250 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Class Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <title>Class Portal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      :root{
+        --bg: #0f172a;
+        --card: #0f172a;
+        --panel: #0b1220;
+        --muted: #9ca3af;
+        --accent: #2b6ee6; /* brighter blue */
+        --accent-2: #1f4ed8;
+        --green: #16a34a;
+        --white: #ffffff;
+      }
 
-  <style>
-    body {
-      background: #0f172a;
-      color: #e5e7eb;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-    }
+      /* Full-viewport layout - single page (no scroll) */
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: var(--bg);
+        font-family: Inter, system-ui, Arial, sans-serif;
+        color: var(--white);
+      }
 
-    .container {
-      max-width: 2000px;
-      width: 100%;
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 16px;
-      border: 1px solid #475569;
-    }
+      /* Outer wrapper sized to viewport and prevents scrolling */
+      .page {
+        height: 100vh;               /* full viewport */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        box-sizing: border-box;
+      }
 
-    h1 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 1.6rem;
-    }
-
-    p.subtitle {
-      margin-top: 0;
-      margin-bottom: 20px;
-      color: #9ca3af;
-      font-size: 0.95rem;
-    }
-
-    /* Video section: player left, list right */
-    .video-section {
-      display: flex;
-      gap: 16px;
-      align-items: stretch;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-
-    .video-player {
-      flex: 3;
-      min-width: 300px;
-      background: #020617;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .video-player iframe {
-      width: 100%;
-      height: 420px;
-      border: none;
-      display: block;
-    }
-
-    .video-list {
-      flex: 1;
-      min-width: 230px;
-      max-width: 300px;
-      max-height: 420px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .video-list-title {
-      font-size: 0.95rem;
-      font-weight: bold;
-      margin-bottom: 4px;
-    }
-
-    .video-item {
-      width: 100%;
-      text-align: left;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: none;
-      background: #334155;
-      color: #e5e7eb;
-      cursor: pointer;
-      font-size: 0.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      transition: 0.15s;
-    }
-
-    .video-item:hover {
-      background: #475569;
-    }
-
-    .video-item.active {
-      background: #2563eb;
-    }
-
-    .video-item .title {
-      font-weight: 600;
-    }
-
-    .video-item .meta {
-      font-size: 0.8rem;
-      color: #cbd5f5;
-    }
-
-    /* Zoom button */
-    .zoom-button {
-      margin-top: 8px;
-      display: inline-block;
-      padding: 14px 20px;
-      text-align: center;
-      background: #22c55e;
-      color: #022c22;
-      text-decoration: none;
-      border-radius: 999px;
-      font-size: 1rem;
-      font-weight: bold;
-    }
-
-    .zoom-button:hover {
-      background: #16a34a;
-    }
-
-    @media (max-width: 700px) {
-      .video-section {
+      /* Card that contains everything; fixed max height so no scroll */
+      .card {
+        width: 100%;
+        max-width: 1200px;
+        height: calc(100vh - 36px);  /* fill inside padding */
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        border-radius: 12px;
+        border: 1px solid rgba(71,85,105,0.25);
+        box-sizing: border-box;
+        display: flex;
         flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+        overflow: hidden;           /* ensure nothing scrolls */
       }
+
+      /* Header row */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex: 0 0 auto;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+      .header .subtitle {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      /* Tutor grid (smaller so fits) */
+      .tutor-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 smaller buttons across */
+        gap: 10px;
+        flex: 0 0 auto;
+      }
+
+      /* Tutor card/button */
+      .tutor-card {
+        background: var(--white);
+        color: var(--panel);
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 0.95rem;
+        border: 2px solid transparent;
+        transition: transform .09s ease, box-shadow .12s ease, background .12s;
+        height: 64px;                 /* compact */
+        box-sizing: border-box;
+      }
+
+      .tutor-card .name {
+        line-height: 1;
+      }
+      .tutor-card .sub {
+        font-size: 0.78rem;
+        color: #0f172a;
+        opacity: 0.7;
+        font-weight: 700;
+      }
+
+      .tutor-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+      }
+      .tutor-card.active {
+        background: linear-gradient(180deg, var(--accent), var(--accent-2));
+        color: #fff;
+        box-shadow: 0 12px 36px rgba(16,24,40,0.55);
+        border-color: rgba(255,255,255,0.06);
+      }
+
+      /* Video area - fills most of card */
+      .video-area {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .video-player {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #000;
+        border: 1px solid rgba(255,255,255,0.04);
+      }
+
       .video-player iframe {
-        height: 260px;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+        background: #000;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="container">
-    <h1>Class Portal</h1>
-    <p class="subtitle">Watch recorded sessions or join the live Zoom.</p>
-    <div class="video-section">
-      <div class="video-player">
-        <iframe id="mainVideo"
-                src=""
-                allow="autoplay; fullscreen"
-                allowfullscreen
-                webkitallowfullscreen
-                mozallowfullscreen></iframe>
-      </div>
+      /*Zoom button*/
+      .controls { 
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-      <div class="video-list" id="videoList">
-        <div class="video-list-title">Recorded Sessions</div>
+      #zoomJoinBtn {
+        width: 100%;
+        max-width: 520px;
+        padding: 14px 18px;
+        font-size: 1.05rem;
+        font-weight: 800;
+        background: var(--green);
+        color: #01220d;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(2,60,20,0.22);
+        transition: transform .08s ease;
+      }
+      #zoomJoinBtn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+      #zoomJoinBtn:not(:disabled):hover { transform: translateY(-3px); }
+
+      @media (max-width: 1100px) {
+        .tutor-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .tutor-card { height: 60px; font-size: 0.92rem; }
+      }
+      @media (max-width: 700px) {
+        .card { padding: 12px; }
+        .tutor-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+        .tutor-card { height: 56px; font-size: 0.9rem; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="card" role="application" aria-label="Class portal">
+        <div class="header">
+          <div>
+            <h1>Class Portal</h1>
+          </div>
+        </div>
+
+        <!-- Tutor buttons -->
+        <div class="tutor-grid" id="tutorGrid" aria-hidden="false">
+        </div>
+
+        <!-- Big video player -->
+        <div class="video-area">
+          <div class="video-player">
+            <iframe
+              id="mainVideo"
+              src=""
+              allow="autoplay; fullscreen"
+              allowfullscreen
+              webkitallowfullscreen
+              mozallowfullscreen
+              title="Class video player"></iframe>
+          </div>
+        </div>
+
+        <!-- Zoom control -->
+        <div class="controls">
+          <button id="zoomJoinBtn" disabled aria-disabled="true">Join Zoom Session</button>
+        </div>
       </div>
     </div>
 
-    <!-- Zoom button -->
-    <a class="zoom-button"
-       href="https://zoom.us/j/1234567890?pwd=EXAMPLEPASSCODE"
-       target="_blank" rel="noopener noreferrer">
-      Join Zoom Meeting
-    </a>
-  </div>
+    <script>
+      /*
+         - Set tutors array (name, folderId, zoomLink)
+      */
+      const COMMON_APPS_SCRIPT_BASE = "https://script.google.com/macros/s/AKfycbzCyDV6ovyNfYUdsayVjiYTYRacMR58GVquNi-qWEzrDrmqEDP_rKIOSDCxy7ZWVq4Xpw/exec";
 
-  <script>
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwjnKiq9CPjXNVC5Bf5SalZL11w1s3TZntSxNvLa6BojURqcapZ-rkMQnqN-npj9nCFOg/exec";
+      const tutors = [
+        { name: "DANIEL'S GROUP", folderId: "1S8DczuWyzoG8Wcg-ch0L3b1a4cOgs8ei", zoomLink: "https://zoom.us/j/111111111?pwd=AAA" },
+        { name: "DOM'S GROUP",    folderId: "1BuCkV_sNvUZ8OyI6irLsHdn0UvXOzq3Z", zoomLink: "https://zoom.us/j/222222222?pwd=BBB" },
+        { name: "HANA'S GROUP",   folderId: "1S8DczuWyzoG8Wcg-ch0L3b1a4cOgs8ei",    zoomLink: "https://zoom.us/j/333333333?pwd=CCC" },
+        { name: "SERENA'S GROUP", folderId: "1S8DczuWyzoG8Wcg-ch0L3b1a4cOgs8ei",  zoomLink: "https://zoom.us/j/444444444?pwd=DDD" }
+      ];
 
-    async function loadVideosFromDrive() {
-      try {
-        const res = await fetch(APPS_SCRIPT_URL);
-        const arr = await res.json();
+      // DOM refs
+      const tutorGrid = document.getElementById("tutorGrid");
+      const mainVideo = document.getElementById("mainVideo");
+      const zoomJoinBtn = document.getElementById("zoomJoinBtn");
 
-        if (arr.error) {
-          console.error("Drive list error:", arr.error);
-          // show a friendly message to the user
-          const list = document.getElementById("videoList");
-          list.innerHTML = '<div class="video-list-title">Recorded Sessions</div><div style="padding:12px;color:#fca5a5">Failed to load videos.</div>';
-          return;
-        }
+      let activeIndex = null;
 
-        const videoListEl = document.getElementById("videoList");
-        const mainVideo = document.getElementById("mainVideo");
-
-        // Reset list (keep the title)
-        videoListEl.innerHTML = '<div class="video-list-title">Recorded Sessions</div>';
-
-        if (!Array.isArray(arr) || arr.length === 0) {
-          videoListEl.innerHTML += '<div style="padding:12px;color:#9ca3af">No videos found in the folder.</div>';
-          return;
-        }
-
-        arr.forEach((file, idx) => {
+      // Render tutor buttons (compact)
+      function renderTutorButtons() {
+        tutorGrid.innerHTML = "";
+        tutors.forEach((tutor, i) => {
           const btn = document.createElement("button");
-          btn.className = "video-item";
-          if (idx === 0) btn.classList.add("active");
+          btn.className = "tutor-card";
+          btn.type = "button";
+          btn.setAttribute("aria-pressed", "false");
+          btn.innerHTML = `<div class="name">${escapeHtml(tutor.name)}</div>`;
+          btn.addEventListener("click", () => selectTutor(i, btn));
+          tutorGrid.appendChild(btn);
+        });
+      }
 
-          // sanitize file title before inserting into DOM
-          const safeTitle = escapeHtml(String(file.title || "Untitled"));
-          const created = file.createdAt ? new Date(file.createdAt).toLocaleDateString() : "";
-
-          btn.innerHTML = `
-            <span class="title">${safeTitle}</span>
-            <span class="meta">${created}</span>
-          `;
-          btn.dataset.src = file.previewUrl;
-
-          btn.addEventListener("click", () => {
-            // swap iframe src to Drive preview
-            mainVideo.src = file.previewUrl;
-
-            // update active state
-            videoListEl.querySelectorAll(".video-item").forEach(i => i.classList.remove("active"));
-            btn.classList.add("active");
-          });
-
-          videoListEl.appendChild(btn);
-
-          // default first video
-          if (idx === 0) {
-            mainVideo.src = file.previewUrl;
+      // Highlight and select a tutor
+      function selectTutor(index, btnEl) {
+        // remove active from others
+        Array.from(tutorGrid.children).forEach((c, idx) => {
+          if (idx === index) {
+            c.classList.add("active");
+            c.setAttribute("aria-pressed", "true");
+          } else {
+            c.classList.remove("active");
+            c.setAttribute("aria-pressed", "false");
           }
         });
 
-      } catch (err) {
-        console.error("Failed to fetch drive list:", err);
-        const list = document.getElementById("videoList");
-        list.innerHTML = '<div class="video-list-title">Recorded Sessions</div><div style="padding:12px;color:#fca5a5">Error loading videos.</div>';
+        activeIndex = index;
+        const tutor = tutors[index];
+
+        // configure Zoom button
+        if (tutor.zoomLink && tutor.zoomLink.trim()) {
+          zoomJoinBtn.disabled = false;
+          zoomJoinBtn.removeAttribute("aria-disabled");
+          zoomJoinBtn.onclick = () => window.open(tutor.zoomLink, "_blank");
+        } else {
+          zoomJoinBtn.disabled = true;
+          zoomJoinBtn.setAttribute("aria-disabled", "true");
+          zoomJoinBtn.onclick = null;
+        }
+
+        // load the latest video for this tutor
+        loadFirstVideoForFolder(tutor.folderId).catch(err => {
+          console.error(err);
+          // clear player on error
+          mainVideo.src = "";
+        });
       }
-    }
 
-    // small helper to avoid HTML injection when file names contain special chars
-    function escapeHtml(s) {
-      return s.replaceAll("&","&amp;")
-              .replaceAll("<","&lt;")
-              .replaceAll(">","&gt;")
-              .replaceAll('"',"&quot;")
-              .replaceAll("'", "&#39;");
-    }
+      // Build Apps Script URL with folderId + cache-buster
+      function makeAppsScriptUrl(folderId) {
+        if (!COMMON_APPS_SCRIPT_BASE) return null;
+        const sep = COMMON_APPS_SCRIPT_BASE.includes("?") ? "&" : "?";
+        const cb = "_cb=" + Date.now();
+        return `${COMMON_APPS_SCRIPT_BASE}${sep}folderId=${encodeURIComponent(folderId)}&${cb}`;
+      }
 
-    // run when page loads
-    loadVideosFromDrive();
-  </script>
-</body>
+      // Fetch the list and play the first video (newest)
+      async function loadFirstVideoForFolder(folderId) {
+        if (!folderId || !folderId.trim()) {
+          throw new Error("No folderId configured for this tutor.");
+        }
+
+        const url = makeAppsScriptUrl(folderId);
+        if (!url) throw new Error("Apps Script base URL not configured.");
+
+        // fetch JSON
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error("Network error: " + res.status);
+        const data = await res.json();
+
+        if (data && data.error) throw new Error(data.error);
+        if (!Array.isArray(data) || data.length === 0) {
+          throw new Error("No videos found in that folder.");
+        }
+
+        const first = data[0];
+        if (!first || !first.previewUrl) throw new Error("No preview URL found.");
+
+        // set iframe src to Google Drive preview
+        mainVideo.src = first.previewUrl;
+      }
+
+      // Simple escape to avoid injection in innerHTML
+      function escapeHtml(s) {
+        return String(s || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#39;");
+      }
+
+      // initial render + optionally auto-select first valid tutor
+      renderTutorButtons();
+    </script>
+  </body>
 </html>
