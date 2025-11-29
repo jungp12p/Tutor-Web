@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Class Portal</title>
+    <title>CLICK YOUR TUTOR'S NAME</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <style>
       :root{
@@ -10,13 +10,12 @@
         --card: #0f172a;
         --panel: #0b1220;
         --muted: #9ca3af;
-        --accent: #2b6ee6; /* brighter blue */
+        --accent: #2b6ee6; 
         --accent-2: #1f4ed8;
         --green: #16a34a;
         --white: #ffffff;
       }
 
-      /* Full-viewport layout - single page (no scroll) */
       html, body {
         height: 100%;
         margin: 0;
@@ -25,9 +24,8 @@
         color: var(--white);
       }
 
-      /* Outer wrapper sized to viewport and prevents scrolling */
       .page {
-        height: 100vh;               /* full viewport */
+        height: 100vh;              
         display: flex;
         align-items: center;
         justify-content: center;
@@ -35,11 +33,10 @@
         box-sizing: border-box;
       }
 
-      /* Card that contains everything; fixed max height so no scroll */
       .card {
         width: 100%;
         max-width: 1200px;
-        height: calc(100vh - 36px);  /* fill inside padding */
+        height: calc(100vh - 36px);  
         background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
         border-radius: 12px;
         border: 1px solid rgba(71,85,105,0.25);
@@ -48,7 +45,7 @@
         flex-direction: column;
         gap: 12px;
         padding: 16px;
-        overflow: hidden;           /* ensure nothing scrolls */
+        overflow: hidden;          
       }
 
       /* Header row */
@@ -69,15 +66,13 @@
         font-size: 0.95rem;
       }
 
-      /* Tutor grid (smaller so fits) */
       .tutor-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 smaller buttons across */
+        grid-template-columns: repeat(4, 1fr);
         gap: 10px;
         flex: 0 0 auto;
       }
 
-      /* Tutor card/button */
       .tutor-card {
         background: var(--white);
         color: var(--panel);
@@ -93,7 +88,7 @@
         font-size: 0.95rem;
         border: 2px solid transparent;
         transition: transform .09s ease, box-shadow .12s ease, background .12s;
-        height: 64px;                 /* compact */
+        height: 64px;                 
         box-sizing: border-box;
       }
 
@@ -118,7 +113,6 @@
         border-color: rgba(255,255,255,0.06);
       }
 
-      /* Video area - fills most of card */
       .video-area {
         flex: 1 1 auto;
         display: flex;
@@ -143,7 +137,6 @@
         background: #000;
       }
 
-      /*Zoom button*/
       .controls { 
         flex: 0 0 auto;
         display: flex;
@@ -192,11 +185,9 @@
           </div>
         </div>
 
-        <!-- Tutor buttons -->
         <div class="tutor-grid" id="tutorGrid" aria-hidden="false">
         </div>
 
-        <!-- Big video player -->
         <div class="video-area">
           <div class="video-player">
             <iframe
@@ -210,7 +201,6 @@
           </div>
         </div>
 
-        <!-- Zoom control -->
         <div class="controls">
           <button id="zoomJoinBtn" disabled aria-disabled="true">Join Zoom Session</button>
         </div>
