@@ -1,11 +1,55 @@
 // Set tutors array (name, folderId, zoomLink)
 const COMMON_APPS_SCRIPT_BASE = "https://script.google.com/macros/s/AKfycbzCyDV6ovyNfYUdsayVjiYTYRacMR58GVquNi-qWEzrDrmqEDP_rKIOSDCxy7ZWVq4Xpw/exec";
-
 const tutors = [
-  { name: "DANIEL'S GROUP", folderId: "1xNtOUIMWs1o-b5Oo3_s5TqxN3ZCuuHrt", zoomLink: "https://us05web.zoom.us/j/5411669479?pwd=c1RXdktyaXlGTk1WdUtJMmE3WWtWQT09" },
-  { name: "DOM'S GROUP",    folderId: "1f85RbVFBY5LXBj0bpmWBXn5IYTLwYQuA", zoomLink: "https://us04web.zoom.us/j/74792301832?pwd=mFUZcI0XsykRmxADbzPjXkdTsNjatA.1" },
-  { name: "HANA'S GROUP",   folderId: "1VYKdKMGwO3NC1UlxB10uG8lEL36aPdC-",    zoomLink: "https://us04web.zoom.us/j/79594039777?pwd=Svn9g6SaDN47h5Rd500HWGgP9yZZM8.1" },
-  { name: "SERENA'S GROUP", folderId: "1hcvu6q7B8kp1xG3zPZSWJKc4nhnE8sVn",  zoomLink: "https://us05web.zoom.us/j/85247366939?pwd=KKQoK7BcCkGhQulcUoPp8cxBhdlLS8.1&jst=2" }
+  { 
+    name: "DANIEL'S GROUP", 
+    folderId: "1xNtOUIMWs1o-b5Oo3_s5TqxN3ZCuuHrt", 
+    folderId: "1GwTPGAVq4uAdURucdphMdGDLZo06Bs_7", 
+    zoomLink: "https://us05web.zoom.us/j/5411669479?pwd=c1RXdktyaXlGTk1WdUtJMmE3WWtWQT09",
+    time: "SATURDAY 9:00 AM"
+  },
+  { 
+    name: "DOM'S GROUP",    
+    folderId: "1f85RbVFBY5LXBj0bpmWBXn5IYTLwYQuA", 
+    zoomLink: "https://us04web.zoom.us/j/74792301832?pwd=mFUZcI0XsykRmxADbzPjXkdTsNjatA.1",
+    time: "FRIDAY 7:00 PM"
+  },
+  { 
+    name: "SERENA'S GROUP", 
+    folderId: "1hcvu6q7B8kp1xG3zPZSWJKc4nhnE8sVn", 
+    zoomLink: "https://us05web.zoom.us/j/85247366939?pwd=KKQoK7BcCkGhQulcUoPp8cxBhdlLS8.1" ,
+    time: "SATURDAY 9:00 AM"
+  },
+  { 
+    name: "ALLI'S GROUP",   
+    folderId: "1V4i8ZtlRYwSgFV1kTMgEBg8z-dD49c5E", 
+    zoomLink: "https://zoom.us/j/95301340901?pwd=qA8LvMckLC50SEbIh2PfRHNry6zP0L.1" ,
+    time: "FRIDAY 7:00 PM"
+  },
+  { 
+    name: "SIMRAN'S GROUP", 
+    folderId: "1VYKdKMGwO3NC1UlxB10uG8lEL36aPdC-", 
+    zoomLink: "https://us05web.zoom.us/j/83855169239?pwd=6mLnTrq4gMuJYVWTSQLgCL84tYvFx4.1" ,
+    time: "FRIDAY 7:00 PM"
+  },
+  { 
+    name: "COLIN'S GROUP", 
+    folderId: "1rAFd64PRSQ3t4BFNNGUqX3OSDx8u7SNN", 
+    zoomLink: "https://us04web.zoom.us/j/75867638680?pwd=QM6jPUgvzx6RLTSLpkWz21v5BnRVKy.1" ,
+    time: "FRIDAY 7:00 PM"
+  },
+  { 
+    name: "AUDREY'S GROUP", 
+    folderId: "1jBeOdw-EmgUukawldeVR8ub-lMjzb7Gi", 
+    zoomLink: "https://us05web.zoom.us/j/82948939334?pwd=NVHQFxF4IZQ22CYG6u2qban5RvvFOB.1",
+    time: "THURSDAY 7:00 PM"
+  },
+  { 
+    name: "ANDREW'S GROUP", 
+    folderId: "1kZjZwhFQidF_tDfxF_iY2gJfwQzquEoT", 
+    zoomLink: "https://us05web.zoom.us/j/84083014041?pwd=80qI9IQUhSCDmbpLnpubBQ4lBeV4oE.1" ,
+    time: "SATURDAY 9:00 AM"
+  }
 ];
 
 // DOM refs
