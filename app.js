@@ -93,10 +93,12 @@ function selectTutor(index, btnEl){
   if (tutor.zoomLink && tutor.zoomLink.trim()) {
     zoomJoinBtn.disabled = false;
     zoomJoinBtn.removeAttribute("aria-disabled");
+    zoomJoinBtn.textContent = `Join Zoom Session • ${tutor.time}`;
     zoomJoinBtn.onclick = () => window.open(tutor.zoomLink, "_blank");
   } else {
     zoomJoinBtn.disabled = true;
     zoomJoinBtn.setAttribute("aria-disabled", "true");
+    zoomJoinBtn.textContent = "Join Zoom Session";
     zoomJoinBtn.onclick = null;
   }
 
