@@ -9,7 +9,7 @@ const tutors = [
     time: "SATURDAY 9:00 AM"
   },
   { 
-    name: "DOM'S GROUP",    
+    name: "",    
     folderId: "1f85RbVFBY5LXBj0bpmWBXn5IYTLwYQuA", 
     zoomLink: "https://us04web.zoom.us/j/74792301832?pwd=mFUZcI0XsykRmxADbzPjXkdTsNjatA.1",
     time: "FRIDAY 7:00 PM"
@@ -33,7 +33,7 @@ const tutors = [
     time: "FRIDAY 7:00 PM"
   },
   { 
-    name: "COLIN'S GROUP", 
+    name: "", 
     folderId: "1rAFd64PRSQ3t4BFNNGUqX3OSDx8u7SNN", 
     zoomLink: "https://us04web.zoom.us/j/75867638680?pwd=QM6jPUgvzx6RLTSLpkWz21v5BnRVKy.1" ,
     time: "FRIDAY 7:00 PM"
