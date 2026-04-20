@@ -128,6 +128,7 @@ function renderTutorButtons(){
 function selectTutor(index){
   activeIndex = index;
   const tutor = tutors[index];
+  applySessionTheme(tutor.color);
   activeTutorName.textContent = tutor.name;
   showSessionView();
 
@@ -163,6 +164,35 @@ function showSelectionView() {
   sessionView.classList.add("hidden");
   selectionView.classList.remove("hidden");
   mainVideo.src = "";
+  clearSessionTheme();
+}
+
+function applySessionTheme(color) {
+  if (!color || !color.trim()) return;
+  sessionView.style.setProperty("--session-bg", color);
+  sessionView.style.setProperty("--session-ink", getReadableTextColor(color));
+}
+
+function clearSessionTheme() {
+  sessionView.style.removeProperty("--session-bg");
+  sessionView.style.removeProperty("--session-ink");
+}
+
+function getReadableTextColor(hexColor) {
+  const normalized = String(hexColor || "").trim().replace("#", "");
+  if (![3, 6].includes(normalized.length)) return "#081225";
+
+  const full = normalized.length === 3
+    ? normalized.split("").map((c) => c + c).join("")
+    : normalized;
+
+  const r = parseInt(full.slice(0, 2), 16);
+  const g = parseInt(full.slice(2, 4), 16);
+  const b = parseInt(full.slice(4, 6), 16);
+  if ([r, g, b].some(Number.isNaN)) return "#081225";
+
+  const luminance = (0.2126 * r) + (0.7152 * g) + (0.0722 * b);
+  return luminance > 150 ? "#081225" : "#f8fbff";
 }
 
 // Apps script URL with folderid + cache

@@ -70,6 +70,17 @@ html, body {
   min-height: 0;
 }
 
+.session-view {
+  --session-bg: transparent;
+  --session-ink: #dbe7ff;
+  background: var(--session-bg);
+  color: var(--session-ink);
+  border-radius: 12px;
+  padding: 12px;
+  box-sizing: border-box;
+  transition: background 0.2s ease;
+}
+
 .selection-title {
   margin: 0 0 16px;
   text-align: center;
@@ -158,7 +169,7 @@ html, body {
   margin: 0;
   font-size: 1rem;
   letter-spacing: 0.03em;
-  color: #dbe7ff;
+  color: var(--session-ink);
 }
 
 /* Video area*/
