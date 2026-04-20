@@ -63,7 +63,7 @@ const tutors = [
     folderId: "1DomFXabx9thhsmSNwh33IEk5A6ohFVEd", 
     zoomLink: "https://ucla.zoom.us/j/92397437970" ,
     time: "THURSDAY 6:00 PM",
-    color: "#f82991"
+    color: "#e62f8a"
   },
   { 
     name: "MINJAE'S GROUP", 
@@ -91,7 +91,7 @@ const tutors = [
     folderId: "1RQBo1kzWg3IEclBd2H4g4Ah32ftQSepi", 
     zoomLink: "https://zoom.us/launch/chat?src=direct_chat_link&email=seungyou%40g.ucla.edu" ,
     time: "THURSDAY 6:00 PM",
-    color: "#55fa55"
+    color: "#69f569"
   }
 ];
 
