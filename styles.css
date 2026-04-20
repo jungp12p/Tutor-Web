@@ -75,7 +75,7 @@ html, body {
   background: var(--white);
   color: var(--panel);
   border-radius: 10px;
-  padding: 10px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,10 +83,10 @@ html, body {
   gap: 6px;
   cursor: pointer;
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   border: 2px solid transparent;
   transition: transform .09s ease, box-shadow .12s ease, background .12s;
-  height: 64px;
+  height: 58px;
   box-sizing: border-box;
 }
 
@@ -166,10 +166,10 @@ html, body {
 
 @media (max-width: 1100px) {
   .tutor-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .tutor-card { height: 60px; font-size: 0.92rem; }
+  .tutor-card { height: 56px; font-size: 0.88rem; }
 }
 @media (max-width: 700px) {
   .card { padding: 12px; }
   .tutor-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .tutor-card { height: 56px; font-size: 0.9rem; }
+  .tutor-card { height: 52px; font-size: 0.86rem; }
 }
