@@ -1,6 +1,9 @@
 :root{
   --bg: #0f172a;
   --card: #0f172a;
+  --app-bg: var(--bg);
+  --app-card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  --app-card-border: 1px solid rgba(71,85,105,0.25);
   --panel: #0b1220;
   --muted: #9ca3af;
   --accent: #2b6ee6;
@@ -14,7 +17,7 @@
 html, body {
   height: 100%;
   margin: 0;
-  background: var(--bg);
+  background: var(--app-bg);
   font-family: Inter, system-ui, Arial, sans-serif;
   color: var(--white);
 }
@@ -47,9 +50,9 @@ html, body {
   width: 100%;
   max-width: 1200px;
   height: calc(100vh - 36px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: var(--app-card-bg);
   border-radius: 12px;
-  border: 1px solid rgba(71,85,105,0.25);
+  border: var(--app-card-border);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

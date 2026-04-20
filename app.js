@@ -169,11 +169,19 @@ function showSelectionView() {
 
 function applySessionTheme(color) {
   if (!color || !color.trim()) return;
+  const rootStyle = document.documentElement.style;
+  rootStyle.setProperty("--app-bg", color);
+  rootStyle.setProperty("--app-card-bg", color);
+  rootStyle.setProperty("--app-card-border", "1px solid rgba(0,0,0,0.12)");
   sessionView.style.setProperty("--session-bg", color);
   sessionView.style.setProperty("--session-ink", getReadableTextColor(color));
 }
 
 function clearSessionTheme() {
+  const rootStyle = document.documentElement.style;
+  rootStyle.removeProperty("--app-bg");
+  rootStyle.removeProperty("--app-card-bg");
+  rootStyle.removeProperty("--app-card-border");
   sessionView.style.removeProperty("--session-bg");
   sessionView.style.removeProperty("--session-ink");
 }
