@@ -126,17 +126,6 @@ function renderTutorButtons(){
 
 // Highlight and select a tutor
 function selectTutor(index){
-  // remove active from others
-  Array.from(tutorGrid.children).forEach((c, idx) => {
-    if (idx === index) {
-      c.classList.add("active");
-      c.setAttribute("aria-pressed", "true");
-    } else {
-      c.classList.remove("active");
-      c.setAttribute("aria-pressed", "false");
-    }
-  });
-
   activeIndex = index;
   const tutor = tutors[index];
   activeTutorName.textContent = tutor.name;
