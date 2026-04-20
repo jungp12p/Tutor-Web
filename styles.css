@@ -71,9 +71,9 @@ html, body {
 }
 
 .selection-title {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   text-align: center;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   letter-spacing: 0.03em;
   color: #dbe7ff;
 }
@@ -82,31 +82,30 @@ html, body {
 .tutor-grid{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  flex: 0 0 auto;
+  gap: 14px;
+  flex: 1 1 auto;
   width: 100%;
-  max-width: 1060px;
+  max-width: 1100px;
   margin: 0 auto;
   align-content: start;
 }
 
 /* Tutor card*/
 .tutor-card {
-  background: linear-gradient(180deg, #ffffff, #f2f7ff);
   color: var(--ink);
   border-radius: 12px;
-  padding: 12px 10px;
+  padding: 16px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
   font-weight: 800;
-  font-size: 0.95rem;
-  border: 2px solid rgba(43, 110, 230, 0.16);
+  font-size: 1.05rem;
+  border: 2px solid rgba(8, 18, 37, 0.2);
   transition: transform .09s ease, box-shadow .12s ease, background .12s;
-  min-height: 88px;
+  min-height: 110px;
   box-sizing: border-box;
   text-align: center;
 }
@@ -116,7 +115,7 @@ html, body {
   letter-spacing: 0.01em;
 }
 .tutor-card .sub {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   color: #27406f;
   opacity: 0.95;
   font-weight: 700;
@@ -140,8 +139,9 @@ html, body {
 .session-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
   margin-bottom: 8px;
+  position: relative;
 }
 
 .back-btn {
@@ -153,6 +153,8 @@ html, body {
   border-radius: 10px;
   cursor: pointer;
   flex: 0 0 auto;
+  position: absolute;
+  left: 0;
 }
 
 .back-btn-image {
@@ -223,9 +225,9 @@ html, body {
 #zoomJoinBtn:not(:disabled):hover { transform: translateY(-3px); }
 
 @media (max-width: 1100px) {
-  .tutor-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .tutor-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .tutor-grid { max-width: 900px; }
-  .tutor-card { min-height: 82px; font-size: 0.9rem; }
+  .tutor-card { min-height: 105px; font-size: 1rem; }
 }
 @media (max-width: 700px) {
   .card { padding: 12px; }
@@ -235,19 +237,19 @@ html, body {
     font-size: 0.9rem;
   }
   .selection-title {
-    font-size: 1.02rem;
-    margin-bottom: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
   }
-  .tutor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .tutor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .tutor-grid { max-width: 520px; }
   .tutor-card {
-    min-height: 76px;
-    padding: 10px 8px;
-    font-size: 0.85rem;
-    gap: 6px;
+    min-height: 92px;
+    padding: 12px 10px;
+    font-size: 0.92rem;
+    gap: 8px;
   }
   .tutor-card .sub {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
   .back-btn {
     width: 42px;
