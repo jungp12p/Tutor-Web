@@ -68,6 +68,9 @@ html, body {
   grid-template-columns: repeat(4, 1fr); /* 4 smaller buttons across */
   gap: 10px;
   flex: 0 0 auto;
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
 }
 
 /* Tutor card*/
@@ -75,18 +78,18 @@ html, body {
   background: var(--white);
   color: var(--panel);
   border-radius: 10px;
-  padding: 8px;
+  padding: 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   border: 2px solid transparent;
   transition: transform .09s ease, box-shadow .12s ease, background .12s;
-  height: 58px;
+  height: 54px;
   box-sizing: border-box;
 }
 
@@ -94,7 +97,7 @@ html, body {
   line-height: 1;
 }
 .tutor-card .sub {
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   color: var(--muted);
   opacity: 0.7;
   font-weight: 700;
@@ -166,10 +169,12 @@ html, body {
 
 @media (max-width: 1100px) {
   .tutor-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .tutor-card { height: 56px; font-size: 0.88rem; }
+  .tutor-grid { max-width: 760px; }
+  .tutor-card { height: 52px; font-size: 0.84rem; }
 }
 @media (max-width: 700px) {
   .card { padding: 12px; }
   .tutor-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .tutor-card { height: 52px; font-size: 0.86rem; }
+  .tutor-grid { max-width: 520px; }
+  .tutor-card { height: 48px; font-size: 0.82rem; }
 }
