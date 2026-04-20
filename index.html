@@ -11,28 +11,39 @@
     <div class="page">
       <h1 class="page-title">Class Portal</h1>
       <div class="card" role="application" aria-label="Class portal">
-        <!-- tutor buttons -->
-        <div class="tutor-grid" id="tutorGrid" aria-hidden="false">
-        </div>
+        <section id="selectionView" class="selection-view" aria-label="Tutor selection view">
+          <h2 class="selection-title">Choose A Tutor Group</h2>
+          <!-- tutor buttons -->
+          <div class="tutor-grid" id="tutorGrid" aria-hidden="false"></div>
+        </section>
 
-        <!-- video player -->
-        <div class="video-area">
-          <div class="video-player">
-            <iframe
-              id="mainVideo"
-              src=""
-              allow="autoplay; fullscreen"
-              allowfullscreen
-              webkitallowfullscreen
-              mozallowfullscreen
-              title="Class video player"></iframe>
+        <section id="sessionView" class="session-view hidden" aria-label="Tutor session view">
+          <div class="session-header">
+            <button id="backBtn" class="back-btn" type="button" aria-label="Back to tutor list">
+              <img src="back-button.png" alt="Back" class="back-btn-image" />
+            </button>
+            <h2 id="activeTutorName" class="active-tutor-name">Tutor Session</h2>
           </div>
-        </div>
 
-        <!-- Zoom control -->
-        <div class="controls">
-          <button id="zoomJoinBtn" disabled aria-disabled="true">Join Zoom Session</button>
-        </div>
+          <!-- video player -->
+          <div class="video-area">
+            <div class="video-player">
+              <iframe
+                id="mainVideo"
+                src=""
+                allow="autoplay; fullscreen"
+                allowfullscreen
+                webkitallowfullscreen
+                mozallowfullscreen
+                title="Class video player"></iframe>
+            </div>
+          </div>
+
+          <!-- Zoom control -->
+          <div class="controls">
+            <button id="zoomJoinBtn" disabled aria-disabled="true">Join Zoom Session</button>
+          </div>
+        </section>
       </div>
     </div>
 

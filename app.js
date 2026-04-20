@@ -84,8 +84,12 @@ const tutors = [
 
 // DOM refs
 const tutorGrid = document.getElementById("tutorGrid");
+const selectionView = document.getElementById("selectionView");
+const sessionView = document.getElementById("sessionView");
+const activeTutorName = document.getElementById("activeTutorName");
 const mainVideo = document.getElementById("mainVideo");
 const zoomJoinBtn = document.getElementById("zoomJoinBtn");
+const backBtn = document.getElementById("backBtn");
 
 let activeIndex = null;
 
@@ -97,14 +101,17 @@ function renderTutorButtons(){
     btn.className = "tutor-card";
     btn.type = "button";
     btn.setAttribute("aria-pressed", "false");
-    btn.innerHTML = `<div class="name">${escapeHtml(tutor.name)}</div>`;
-    btn.addEventListener("click", () => selectTutor(i, btn));
+    btn.innerHTML = `
+      <div class="name">${escapeHtml(tutor.name)}</div>
+      <div class="sub">${escapeHtml(tutor.time)}</div>
+    `;
+    btn.addEventListener("click", () => selectTutor(i));
     tutorGrid.appendChild(btn);
   });
 }
 
 // Highlight and select a tutor
-function selectTutor(index, btnEl){
+function selectTutor(index){
   // remove active from others
   Array.from(tutorGrid.children).forEach((c, idx) => {
     if (idx === index) {
@@ -118,6 +125,8 @@ function selectTutor(index, btnEl){
 
   activeIndex = index;
   const tutor = tutors[index];
+  activeTutorName.textContent = tutor.name;
+  showSessionView();
 
   // config Zoom button
   if (tutor.zoomLink && tutor.zoomLink.trim()) {
@@ -138,6 +147,19 @@ function selectTutor(index, btnEl){
     // clear player on error
     mainVideo.src = "";
   });
+}
+
+// View
+function showSessionView() {
+  selectionView.classList.add("hidden");
+  sessionView.classList.remove("hidden");
+}
+
+// Clear video and return to selection
+function showSelectionView() {
+  sessionView.classList.add("hidden");
+  selectionView.classList.remove("hidden");
+  mainVideo.src = "";
 }
 
 // Apps script URL with folderid + cache
@@ -186,3 +208,6 @@ function escapeHtml(s) {
 
 // initial render
 renderTutorButtons();
+showSelectionView();
+
+backBtn.addEventListener("click", showSelectionView);
