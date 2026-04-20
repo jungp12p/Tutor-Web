@@ -26,6 +26,19 @@ html, body {
   justify-content: center;
   padding: 18px;
   box-sizing: border-box;
+  position: relative;
+}
+
+.page-title {
+  position: absolute;
+  top: 8px;
+  left: 24px;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* Card that contains everything*/
@@ -39,27 +52,9 @@ html, body {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   padding: 16px;
   overflow: hidden;
-}
-
-/* Header row */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  flex: 0 0 auto;
-}
-.header h1 {
-  margin: 0;
-  font-size: 1.25rem;
-}
-.header .subtitle {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
 }
 
 /*Tutor grid*/
@@ -174,6 +169,11 @@ html, body {
 }
 @media (max-width: 700px) {
   .card { padding: 12px; }
+  .page-title {
+    top: 6px;
+    left: 18px;
+    font-size: 0.9rem;
+  }
   .tutor-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .tutor-grid { max-width: 520px; }
   .tutor-card { height: 48px; font-size: 0.82rem; }
