@@ -2,53 +2,83 @@
 const COMMON_APPS_SCRIPT_BASE = "https://script.google.com/macros/s/AKfycbzCyDV6ovyNfYUdsayVjiYTYRacMR58GVquNi-qWEzrDrmqEDP_rKIOSDCxy7ZWVq4Xpw/exec";
 const tutors = [
   { 
-    name: "DANIEL'S GROUP", 
+    name: "JASON'S GROUP", 
     // folderId: "1xNtOUIMWs1o-b5Oo3_s5TqxN3ZCuuHrt", 
     folderId: "1GwTPGAVq4uAdURucdphMdGDLZo06Bs_7", 
-    zoomLink: "https://us05web.zoom.us/j/5411669479?pwd=c1RXdktyaXlGTk1WdUtJMmE3WWtWQT09",
-    time: "SATURDAY 9:00 AM"
+    zoomLink: "https://us05web.zoom.us/j/89188355583?pwd=OYo9U76YAhzyVpP4wawB5I3YFBZeId.1",
+    time: "FRIDAY 9:00 AM"
   },
   { 
-    name: "",    
+    name: "AUDREY'S GROUP",    
     folderId: "1f85RbVFBY5LXBj0bpmWBXn5IYTLwYQuA", 
-    zoomLink: "https://us04web.zoom.us/j/74792301832?pwd=mFUZcI0XsykRmxADbzPjXkdTsNjatA.1",
-    time: "FRIDAY 7:00 PM"
+    zoomLink: "https://ucla.zoom.us/j/93451898462",
+    time: "FRIDAY 11:00 PM"
   },
   { 
-    name: "SERENA'S GROUP", 
+    name: "AMELIA'S GROUP", 
     folderId: "1hcvu6q7B8kp1xG3zPZSWJKc4nhnE8sVn", 
-    zoomLink: "https://us05web.zoom.us/j/85247366939?pwd=KKQoK7BcCkGhQulcUoPp8cxBhdlLS8.1" ,
-    time: "SATURDAY 9:00 AM"
+    zoomLink: "https://zoom.us/j/99269092280?pwd=0CqMazzXewNoCzbVMZ2YDATPobQoQ6.1" ,
+    time: "THURSDAY 9:00 AM"
   },
   { 
-    name: "ALLI'S GROUP",   
+    name: "ISABELLA'S GROUP",   
     folderId: "1V4i8ZtlRYwSgFV1kTMgEBg8z-dD49c5E", 
-    zoomLink: "https://zoom.us/j/95301340901?pwd=qA8LvMckLC50SEbIh2PfRHNry6zP0L.1" ,
-    time: "FRIDAY 7:00 PM"
-  },
-  { 
-    name: "SIMRAN'S GROUP", 
-    folderId: "1VYKdKMGwO3NC1UlxB10uG8lEL36aPdC-", 
-    zoomLink: "https://us05web.zoom.us/j/83855169239?pwd=6mLnTrq4gMuJYVWTSQLgCL84tYvFx4.1" ,
-    time: "FRIDAY 7:00 PM"
-  },
-  { 
-    name: "", 
-    folderId: "1rAFd64PRSQ3t4BFNNGUqX3OSDx8u7SNN", 
-    zoomLink: "https://us04web.zoom.us/j/75867638680?pwd=QM6jPUgvzx6RLTSLpkWz21v5BnRVKy.1" ,
-    time: "FRIDAY 7:00 PM"
-  },
-  { 
-    name: "AUDREY'S GROUP", 
-    folderId: "1jBeOdw-EmgUukawldeVR8ub-lMjzb7Gi", 
-    zoomLink: "https://us05web.zoom.us/j/82948939334?pwd=NVHQFxF4IZQ22CYG6u2qban5RvvFOB.1",
-    time: "THURSDAY 7:00 PM"
+    zoomLink: "https://us04web.zoom.us/j/73322908419?pwd=zqtjla0rFn0PkqdVarR406D7nbrgta.1" ,
+    time: "FRIDAY 9:00 AM"
   },
   { 
     name: "ANDREW'S GROUP", 
+    folderId: "1VYKdKMGwO3NC1UlxB10uG8lEL36aPdC-", 
+    zoomLink: "https://ucla.zoom.us/j/98739330649 " ,
+    time: "FRIDAY 11:00 PM"
+  },
+  { 
+    name: "DANIEL'S GROUP", 
+    folderId: "1rAFd64PRSQ3t4BFNNGUqX3OSDx8u7SNN", 
+    zoomLink: "https://us06web.zoom.us/j/81911705972" ,
+    time: "FRIDAY 11:00 PM"
+  },
+  { 
+    name: "SIMRAN'S GROUP", 
+    folderId: "1jBeOdw-EmgUukawldeVR8ub-lMjzb7Gi", 
+    zoomLink: "https://ucla.zoom.us/j/93411013645",
+    time: "THURSDAY 9:00 AM"
+  },
+  { 
+    name: "SERENA'S GROUP", 
     folderId: "1kZjZwhFQidF_tDfxF_iY2gJfwQzquEoT", 
-    zoomLink: "https://us05web.zoom.us/j/84083014041?pwd=80qI9IQUhSCDmbpLnpubBQ4lBeV4oE.1" ,
-    time: "SATURDAY 9:00 AM"
+    zoomLink: "https://zoom.us/j/94517336772?pwd=VvLAZRb0dDPJfJK0CFPLWosbslkSGq.1 " ,
+    time: "THURSDAY 9:00 AM"
+  },
+  { 
+    name: "NOELANI'S GROUP", 
+    folderId: "1kZjZwhFQidF_tDfxF_iY2gJfwQzquEoT", 
+    zoomLink: "https://ucla.zoom.us/j/92397437970" ,
+    time: "THURSDAY 9:00 AM"
+  },
+  { 
+    name: "MINJAE'S GROUP", 
+    folderId: "1kZjZwhFQidF_tDfxF_iY2gJfwQzquEoT", 
+    zoomLink: "https://ucla.zoom.us/j/9207830480 " ,
+    time: "FRIDAY 9:00 AM"
+  },
+  { 
+    name: "ALLI'S GROUP", 
+    folderId: "1kZjZwhFQidF_tDfxF_iY2gJfwQzquEoT", 
+    zoomLink: "https://us04web.zoom.us/j/95301340901?pwd=qA8LvMckLC50SEbIh2PfRHNry6zP0L.1" ,
+    time: "THURSDAY 9:00 AM"
+  },
+  { 
+    name: "CAT'S GROUP", 
+    folderId: "1kZjZwhFQidF_tDfxF_iY2gJfwQzquEoT", 
+    zoomLink: "https://zoom.us/j/94719750895?pwd=9k6eZGPW1eKA51H1jvKFj2Z7bk6PWa.1" ,
+    time: "FRIDAY 11:00 PM"
+  },
+  { 
+    name: "SEUNGYOU'S GROUP", 
+    folderId: "1kZjZwhFQidF_tDfxF_iY2gJfwQzquEoT", 
+    zoomLink: "https://zoom.us/launch/chat?src=direct_chat_link&email=seungyou%40g.ucla.edu" ,
+    time: "THURSDAY 9:00 AM"
   }
 ];
 
