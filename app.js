@@ -32,7 +32,7 @@ const tutors = [
   },
   { 
     name: "ANDREW'S GROUP", 
-    folderId: "1Z61FPZCuS7ImUJD_r1P6qpg_R3LePqRc-", 
+    folderId: "1Z61FPZCuS7ImUJD_r1P6qpg_R3LePqRc", 
     zoomLink: "https://ucla.zoom.us/j/98739330649 " ,
     time: "SATURDAY 8:00 AM",
     color: "#1155cc"
