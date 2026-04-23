@@ -6,91 +6,91 @@ const tutors = [
     // folderId: "1xNtOUIMWs1o-b5Oo3_s5TqxN3ZCuuHrt", 
     folderId: "1JdfTymif327P7_IYmE-VSsMXAfE5d-5e", 
     zoomLink: "https://us05web.zoom.us/j/89188355583?pwd=OYo9U76YAhzyVpP4wawB5I3YFBZeId.1",
-    time: "FRIDAY 6:00 PM",
+    time: "THURSDAYS 7:00 PM",
     color: "#f1eded"
   },
   { 
     name: "AUDREY'S GROUP",    
     folderId: "1lmOWoosdffILcskU8JpX2VupGyueG0YB", 
     zoomLink: "https://ucla.zoom.us/j/93451898462",
-    time: "SATURDAY 8:00 AM",
+    time: "SATURDAYS 9:00 AM",
     color: "#E06666"
   },
   { 
     name: "AMELIA'S GROUP", 
     folderId: "1ZG5SAEGpvGwIxgjFKlq9H4tCnHGRCqtT", 
     zoomLink: "https://zoom.us/j/99269092280?pwd=0CqMazzXewNoCzbVMZ2YDATPobQoQ6.1" ,
-    time: "THURSDAY 6:00 PM",
+    time: "THURSDAYS 6:30 PM",
     color: "#d0ecc6"
   },
   { 
     name: "ISABELLA'S GROUP",   
     folderId: "1gpyIjyG-lX1OS4e3kENsdjVjs3WlpHL4", 
     zoomLink: "https://us04web.zoom.us/j/73322908419?pwd=zqtjla0rFn0PkqdVarR406D7nbrgta.1" ,
-    time: "FRIDAY 6:00 PM",
+    time: "THURSDAYS 6:30 PM",
     color: "#cfe2f3"
   },
   { 
     name: "ANDREW'S GROUP", 
     folderId: "1Z61FPZCuS7ImUJD_r1P6qpg_R3LePqRc", 
     zoomLink: "https://ucla.zoom.us/j/98739330649 " ,
-    time: "SATURDAY 8:00 AM",
+    time: "SATURDAY 6:00 PM",
     color: "#1155cc"
   },
   { 
     name: "DANIEL'S GROUP", 
     folderId: "1pPlx_1bpcpBzeJFxbQggEHyVebimH_0M", 
     zoomLink: "https://us06web.zoom.us/j/81911705972" ,
-    time: "SATURDAY 8:00 AM",
+    time: "SATURDAYS 9:00 AM",
     color: "#ffd966"
   },
   { 
     name: "SIMRAN'S GROUP", 
     folderId: "1sbk__sOsEFKxDuQVvVzhH_Mi7Ubzj0ZM", 
     zoomLink: "https://ucla.zoom.us/j/93411013645",
-    time: "THURSDAY 6:00 PM",
+    time: "SATURDAYS 7:00 PM",
     color: "#93c47d"
   },
   { 
     name: "SERENA'S GROUP", 
     folderId: "1ewFT3VU5Sx0e0ol987k2n2BWqmzZBJvZ", 
     zoomLink: "https://zoom.us/j/94517336772?pwd=VvLAZRb0dDPJfJK0CFPLWosbslkSGq.1 " ,
-    time: "THURSDAY 6:00 PM",
+    time: "SATURDAYS 6:00 PM",
     color: "#ff9900"
   },
   { 
     name: "NOELANI'S GROUP", 
     folderId: "1DomFXabx9thhsmSNwh33IEk5A6ohFVEd", 
     zoomLink: "https://ucla.zoom.us/j/92397437970" ,
-    time: "THURSDAY 6:00 PM",
+    time: "SATURDAYS 7:00 PM",
     color: "#e62f8a"
   },
   { 
     name: "MINJAE'S GROUP", 
     folderId: "1ZipV5m60nfRwfYPsO-4LD5w2V6ERa2-K", 
     zoomLink: "https://ucla.zoom.us/j/9207830480 " ,
-    time: "FRIDAY 6:00 PM",
+    time: "SATURDAYS 7:00 PM",
     color: "#a4c2f4"
   },
   { 
     name: "ALLI'S GROUP", 
     folderId: "1d6byk6Y7fDpCcSf9O6vVOB3Vrmd5c6J2", 
     zoomLink: "https://us04web.zoom.us/j/95301340901?pwd=qA8LvMckLC50SEbIh2PfRHNry6zP0L.1" ,
-    time: "THURSDAY 6:00 PM",
+    time: "THURSDAYS 6:30 PM",
     color: "#efacd6"
   },
   { 
     name: "CAT'S GROUP", 
     folderId: "1oZpNMnpn1iDidFiCM8rAVrH-xE48Ls3z", 
     zoomLink: "https://zoom.us/j/94719750895?pwd=9k6eZGPW1eKA51H1jvKFj2Z7bk6PWa.1" ,
-    time: "SATURDAY 8:00 AM",
+    time: "SATURDAYS 7:00 PM",
     color: "#de67a3"
   },
   { 
     name: "SEUNGYOU'S GROUP", 
     folderId: "1RQBo1kzWg3IEclBd2H4g4Ah32ftQSepi", 
-    zoomLink: "https://zoom.us/launch/chat?src=direct_chat_link&email=seungyou%40g.ucla.edu" ,
-    time: "THURSDAY 6:00 PM",
+    zoomLink: "https://ucla.zoom.us/j/9623747125" ,
+    time: "THURSDAYS 6:30 PM",
     color: "#69f569"
   }
 ];
